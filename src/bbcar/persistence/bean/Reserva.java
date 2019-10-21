@@ -1,6 +1,8 @@
 package bbcar.persistence.bean;
 
 import java.io.Serializable;
+import java.util.List;
+
 import javax.persistence.*;
 
 @Entity
@@ -13,6 +15,11 @@ public class Reserva implements Serializable {
 	private EstadoReserva estado;
 	@ManyToOne
 	private Viaje viaje;
+	@ManyToOne
+	private Usuario usuario;
+	//Cada reserva guarda sus valoraciones
+	@OneToMany(cascade = { CascadeType.REMOVE }, mappedBy = "reserva")
+	private List<Valoracion> valoraciones;
 
 	public Reserva() {
 		super();

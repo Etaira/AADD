@@ -12,6 +12,8 @@ public class Viaje implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	@ManyToOne
+	private Coche coche;
 	@Column(name = "num_plazas")
 	private Integer numPlazas;
 	private Double precio;
@@ -23,6 +25,8 @@ public class Viaje implements Serializable {
 	private List<Reserva> reservas;
 	@OneToOne(cascade = { CascadeType.REMOVE })
 	private Parada origen;
+	@OneToOne(cascade = { CascadeType.REMOVE })
+	private Parada destino;
 
 	public Viaje() {
 		super();
@@ -74,5 +78,13 @@ public class Viaje implements Serializable {
 
 	public void setOrigen(Parada origen) {
 		this.origen = origen;
+	}
+	
+	public Parada getDestino() {
+		return destino;
+	}
+
+	public void setDestino(Parada destino) {
+		this.destino = destino;
 	}
 }

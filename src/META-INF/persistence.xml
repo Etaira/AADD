@@ -8,6 +8,9 @@
 		<class>bbcar.persistence.bean.Parada</class>
 		<class>bbcar.persistence.bean.Reserva</class>
 		<class>bbcar.persistence.bean.Viaje</class>
+		<class>bbcar.persistence.bean.Usuario</class>
+		<class>bbcar.persistence.bean.Coche</class>
+		<class>bbcar.persistence.bean.Valoracion</class>
 		<properties>
 			<property name="javax.persistence.jdbc.driver"
 				value="com.mysql.cj.jdbc.Driver" />

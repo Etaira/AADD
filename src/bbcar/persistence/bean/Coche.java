@@ -1,12 +1,24 @@
 package bbcar.persistence.bean;
 
-public class Coche {
+import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.*;
+
+@Entity
+public class Coche implements Serializable {
+	@Id
+	@GeneratedValue
+	private Integer id;
 	private String matricula;
 	private String modelo;
 	private int anyo;
 	private int confort;
+	@OneToOne(cascade = { CascadeType.REMOVE })
 	private Usuario propietario;
+	@OneToMany(cascade = { CascadeType.REMOVE }, mappedBy = "coche")
+	private List<Viaje> viajes;
+	
 	public String getMatricula() {
 		return matricula;
 	}
@@ -37,5 +49,19 @@ public class Coche {
 	public void setPropietario(Usuario propietario) {
 		this.propietario = propietario;
 	}
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	public List<Viaje> getViajes() {
+		return viajes;
+	}
+	public void setViajes(List<Viaje> viajes) {
+		this.viajes = viajes;
+	}
+	
+	
 	
 }
