@@ -11,6 +11,13 @@ public abstract class DAOFactoria {
 	 */
 	public static DAOFactoria getDAOFactoria(int jpa2) throws DAOException {
 		switch (jpa2) {
+		/*case MYSQL: {
+			try {
+				return new MySQLDAOFactoria();
+			} catch (Exception e) {
+				throw new DAOException(e.getMessage());
+			}
+		}*/
 		case JPA:
 			try {
 				return new JPADAOFactoria();
@@ -27,6 +34,7 @@ public abstract class DAOFactoria {
 
 	/* Nuevas entidades DAO */
 	public abstract ParadaDAO getParadaDAO();
+
 	public abstract ViajeDAO getViajeDAO();
 
 }

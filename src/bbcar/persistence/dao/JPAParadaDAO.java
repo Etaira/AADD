@@ -9,9 +9,8 @@ import bbcar.persistence.bean.EntityManagerHelper;
 import bbcar.persistence.bean.Parada;
 import bbcar.persistence.bean.Viaje;
 
-public class JPAParadaDAO extends ParadaDAO {
+public class JPAParadaDAO implements ParadaDAO {
 
-	@Override
 	public Parada createParadaOrigen(Integer idViaje, String ciudad, String calle, Integer numero, Integer CP,
 			Date fecha) {
 		EntityManager em = EntityManagerHelper.getEntityManager();

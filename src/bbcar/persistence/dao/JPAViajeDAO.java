@@ -8,9 +8,8 @@ import javax.persistence.EntityManager;
 import bbcar.persistence.bean.EntityManagerHelper;
 import bbcar.persistence.bean.Viaje;
 
-public class JPAViajeDAO extends ViajeDAO {
+public class JPAViajeDAO implements ViajeDAO {
 
-	@Override
 	public Viaje createViaje(Integer plazas, Double precio) {
 		EntityManager em = EntityManagerHelper.getEntityManager();
 		em.getTransaction().begin();
