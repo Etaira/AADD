@@ -53,10 +53,10 @@ public class JPAUsuarioDAO implements UsuarioDAO {
 	}
 
 	@Override
-	public void update(Usuario c) throws DAOException {
+	public void update(Usuario u) throws DAOException {
 		EntityManager em = EntityManagerHelper.getEntityManager();
 		em.getTransaction().begin();
-		em.merge(c);
+		em.merge(u);
 		em.getTransaction().commit();
 		em.close();
 	}

@@ -66,6 +66,4 @@ public class Coche implements Serializable {
 		this.viajes = viajes;
 	}
 	
-	
-	
 }

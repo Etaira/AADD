@@ -1,10 +1,13 @@
 package bbcar.persistence.dao;
 
+import java.util.ArrayList;
+
 import javax.persistence.EntityManager;
 
 import bbcar.persistence.bean.Coche;
 import bbcar.persistence.bean.EntityManagerHelper;
 import bbcar.persistence.bean.Usuario;
+import bbcar.persistence.bean.Viaje;
 
 public class JPACocheDAO implements CocheDAO {
 
@@ -18,6 +21,7 @@ public class JPACocheDAO implements CocheDAO {
 		coche.setConfort(confort);
 		coche.setMatricula(matricula);
 		coche.setModelo(modelo);
+		coche.setViajes(new ArrayList<Viaje>());
 		Usuario user = (Usuario) em.find(Usuario.class, propietario);
 		coche.setPropietario(user);
 		em.persist(coche);
@@ -34,8 +38,11 @@ public class JPACocheDAO implements CocheDAO {
 
 	@Override
 	public void update(Coche c) throws DAOException {
-		// TODO Auto-generated method stub
-
+		EntityManager em = EntityManagerHelper.getEntityManager();
+		em.getTransaction().begin();
+		em.merge(c);
+		em.getTransaction().commit();
+		em.close();
 	}
 
 }

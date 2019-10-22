@@ -23,10 +23,23 @@ public class JPAValoracionDAO implements ValoracionDAO {
 		valoracion.setReserva(res);
 		valoracion.setUsuarioEmisor(uemisor);
 		valoracion.setUsuarioReceptor(ureceptor);
+		res.getValoraciones().add(valoracion);
+		uemisor.getValoracionesEmitidas().add(valoracion);
+		ureceptor.getValoracionesRecibidas().add(valoracion);
 		em.persist(valoracion);
 		em.getTransaction().commit();
 		em.close();
 		return valoracion;
+	}
+
+	@Override
+	public void update(Valoracion v) throws DAOException {
+		EntityManager em = EntityManagerHelper.getEntityManager();
+		em.getTransaction().begin();
+		em.merge(v);
+		em.getTransaction().commit();
+		em.close();
+		
 	}
 
 }

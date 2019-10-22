@@ -6,4 +6,5 @@ public interface ViajeDAO {
 
 	public Viaje createViaje(Integer plazas, Double precio, Integer coche);
 
+	public void update(Viaje v) throws DAOException;;
 }

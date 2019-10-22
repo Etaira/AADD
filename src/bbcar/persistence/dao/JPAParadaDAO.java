@@ -44,10 +44,18 @@ public class JPAParadaDAO implements ParadaDAO {
 		dir.setNumero(numero);
 		parada.setDireccion(dir);
 		Viaje viaje = em.find(Viaje.class, idViaje);
-		viaje.setOrigen(parada);
+		viaje.setDestino(parada);
 		em.persist(parada);
 		em.getTransaction().commit();
 		em.close();
 		return parada;
+	}
+	
+	public void update(Parada p) {
+		EntityManager em = EntityManagerHelper.getEntityManager();
+		em.getTransaction().begin();
+		em.merge(p);
+		em.getTransaction().commit();
+		em.close();
 	}
 }

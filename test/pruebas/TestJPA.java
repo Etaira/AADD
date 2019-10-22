@@ -78,6 +78,9 @@ public class TestJPA {
 
 		EntityManager em = EntityManagerHelper.getEntityManager();
 		Reserva reservaJPA = em.find(Reserva.class, reserva);
+		Viaje viajeJPA = em.find(Viaje.class, idViaje);
+		Usuario userJPA = em.find(Usuario.class, user);
+		Coche cocheJPA = em.find(Coche.class, car);
 		assertNotNull(reservaJPA);
 		assertNotNull(reservaJPA.getUsuario());
 		assertNotNull(reservaJPA.getViaje());
@@ -85,6 +88,9 @@ public class TestJPA {
 		assertEquals(reservaJPA.getViaje().getId(), idViaje);
 		assertEquals(reservaJPA.getComentario(), "Maleta grande");
 		assertEquals(reservaJPA.getEstado(), EstadoReserva.PENDIENTE);
+		assertTrue(cocheJPA.getViajes().contains(viajeJPA));
+		assertTrue(viajeJPA.getReservas().contains(reservaJPA));
+		assertTrue(userJPA.getReservas().contains(reservaJPA));
 	}
 
 	@Test
@@ -122,11 +128,19 @@ public class TestJPA {
 
 		EntityManager em = EntityManagerHelper.getEntityManager();
 		Valoracion valoracionJPA = em.find(Valoracion.class, valoracion);
+		Usuario userJPAEmisor = em.find(Usuario.class, user1);
+		Usuario userJPAReceptor = em.find(Usuario.class, user2);
+		Reserva reservaJPA = em.find(Reserva.class, reserva);
 		assertNotNull(valoracionJPA);
 		assertEquals(valoracionJPA.getReserva().getId(), reserva);
 		assertEquals(valoracionJPA.getUsuarioEmisor().getId(), user1);
 		assertEquals(valoracionJPA.getUsuarioReceptor().getId(), user2);
 		assertEquals(valoracionJPA.getPuntuacion(), 10);
 		assertEquals(valoracionJPA.getComentario(), "El coche me sorprendio, buen viaje");
+		assertTrue(userJPAEmisor.getValoracionesEmitidas().contains(valoracionJPA));
+		assertTrue(userJPAReceptor.getValoracionesRecibidas().contains(valoracionJPA));
+		assertFalse(userJPAReceptor.getValoracionesEmitidas().contains(valoracionJPA));
+		assertFalse(userJPAEmisor.getValoracionesRecibidas().contains(valoracionJPA));
+		assertTrue(reservaJPA.getValoraciones().contains(valoracionJPA));
 	}
 }
