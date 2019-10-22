@@ -19,13 +19,14 @@ public class Usuario implements Serializable{
 	private Date fechaNacimiento;
 	private String nombre;
 	private String apellidos;
-	@JoinColumn(name = "coche", nullable = true)
-	@OneToOne(cascade = { CascadeType.REMOVE })
+	@OneToOne(cascade = { CascadeType.REMOVE },optional = true)
 	private Coche coche;
 	@OneToMany(cascade = { CascadeType.REMOVE }, mappedBy = "usuario")
 	private List<Reserva> reservas;
+	@JoinColumn(name = "valoraciones_recibidas")
 	@OneToMany(cascade = { CascadeType.REMOVE }, mappedBy = "usuarioReceptor")
 	private List<Valoracion> valoracionesRecibidas;
+	@JoinColumn(name = "valoraciones_emitidas")
 	@OneToMany(cascade = { CascadeType.REMOVE }, mappedBy = "usuarioEmisor")
 	private List<Valoracion> valoracionesEmitidas;
 
@@ -99,6 +100,14 @@ public class Usuario implements Serializable{
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	public List<Reserva> getReservas() {
+		return reservas;
+	}
+
+	public void setReservas(List<Reserva> reservas) {
+		this.reservas = reservas;
 	}
 
 	public List<Valoracion> getValoracionesRecibidas() {

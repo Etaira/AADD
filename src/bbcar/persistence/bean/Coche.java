@@ -19,6 +19,10 @@ public class Coche implements Serializable {
 	@OneToMany(cascade = { CascadeType.REMOVE }, mappedBy = "coche")
 	private List<Viaje> viajes;
 	
+	public Coche() {
+		super();
+	}
+	
 	public String getMatricula() {
 		return matricula;
 	}

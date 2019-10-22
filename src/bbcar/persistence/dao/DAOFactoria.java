@@ -34,7 +34,10 @@ public abstract class DAOFactoria {
 
 	/* Nuevas entidades DAO */
 	public abstract ParadaDAO getParadaDAO();
-
 	public abstract ViajeDAO getViajeDAO();
+	public abstract ValoracionDAO getValoracionDAO();
+	public abstract UsuarioDAO getUsuarioDAO();
+	public abstract CocheDAO getCocheDAO();
+	public abstract ReservaDAO getReservaDAO();
 
 }

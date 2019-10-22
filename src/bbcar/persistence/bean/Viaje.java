@@ -87,4 +87,13 @@ public class Viaje implements Serializable {
 	public void setDestino(Parada destino) {
 		this.destino = destino;
 	}
+
+	public Coche getCoche() {
+		return coche;
+	}
+
+	public void setCoche(Coche coche) {
+		this.coche = coche;
+	}
+	
 }

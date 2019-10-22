@@ -4,7 +4,7 @@ import bbcar.persistence.bean.Coche;
 
 public interface CocheDAO {
 
-	public Coche createCoche(String matricula, String modelo, int anyo, int confort, String propietario)
+	public Coche createCoche(String matricula, String modelo, int anyo, int confort, Integer propietario)
 			throws DAOException;
 
 	public Coche findCocheByMatricula(String matricula) throws DAOException;

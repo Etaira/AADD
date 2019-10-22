@@ -12,10 +12,10 @@ public class Valoracion {
 	@OneToOne(cascade = { CascadeType.REMOVE })
 	private Reserva reserva;
 	@JoinColumn(name = "usuario_emisor")
-	@OneToOne(cascade = { CascadeType.REMOVE })
+	@ManyToOne
 	private Usuario usuarioEmisor;
 	@JoinColumn(name = "usuario_receptor")
-	@OneToOne(cascade = { CascadeType.REMOVE })
+	@ManyToOne
 	private Usuario usuarioReceptor;
 	
 	public Integer getId() {
