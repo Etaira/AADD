@@ -56,7 +56,7 @@ public class TestJPA {
 		SimpleDateFormat formatoDelTexto = new SimpleDateFormat("dd/MM/yyyy");
 		java.util.Date fecha = null;
 		try {
-			fecha = formatoDelTexto.parse("12/02/1995");
+			fecha = formatoDelTexto.parse("14/01/1997");
 		} catch (ParseException ex) {
 			ex.printStackTrace();
 		}
@@ -64,16 +64,16 @@ public class TestJPA {
 				"Lopez", fecha);
 		java.util.Date fechaViaje = null;
 		try {
-			fechaViaje = formatoDelTexto.parse("01/01/2020");
+			fechaViaje = formatoDelTexto.parse("05/06/2020");
 		} catch (ParseException ex) {
 			ex.printStackTrace();
 		}
 		Integer user2 = BlaBlaCar.registrarUsuario("Te_Llevo", "1344", "Profesor", "prof@gmail.com", "Lucas", "Saura",
 				fecha);
-		Integer car = BlaBlaCar.registrarCocheUsuario("9618BTR", "Dacia", 1990, 0, user2);
+		Integer car = BlaBlaCar.registrarCocheUsuario("9009CTD", "Mercedes", 2004, 8, user2);
 		Integer idViaje = BlaBlaCar.registrarViaje(3, 125.0, car);
-		BlaBlaCar.registrarParadaOrigen(idViaje, "Cartagena", "C/Alameda", 25, 30001, fechaViaje);
-		BlaBlaCar.registrarParadaDestino(idViaje, "Murcia", "C/Gracia", 8, 13200, fechaViaje);
+		BlaBlaCar.registrarParadaOrigen(idViaje, "Cartagena", "C/Alameda", 6, 30204, fechaViaje);
+		BlaBlaCar.registrarParadaDestino(idViaje, "Murcia", "C/Gracia",13, 30002, fechaViaje);
 		Integer reserva = BlaBlaCar.registrarReservaUsuario("Maleta grande", EstadoReserva.PENDIENTE, idViaje, user);
 
 		EntityManager em = EntityManagerHelper.getEntityManager();
@@ -98,12 +98,12 @@ public class TestJPA {
 		SimpleDateFormat formatoDelTexto = new SimpleDateFormat("dd/MM/yyyy");
 		java.util.Date fechaUser1 = null;
 		try {
-			fechaUser1 = formatoDelTexto.parse("12/02/1995");
+			fechaUser1 = formatoDelTexto.parse("10/02/1995");
 		} catch (ParseException ex) {
 			ex.printStackTrace();
 		}
-		Integer user1 = BlaBlaCar.registrarUsuario("DeViaje", "1235", "Funcionaria", "lafunci@gmail.com", "Laura",
-				"Lopez", fechaUser1);
+		Integer user1 = BlaBlaCar.registrarUsuario("Rosa33", "3333", "Ama de casa", "rosa_33@gmail.com", "Rosa",
+				"Rubio", fechaUser1);
 		java.util.Date fechaViaje = null;
 		try {
 			fechaViaje = formatoDelTexto.parse("01/01/2020");
@@ -112,17 +112,17 @@ public class TestJPA {
 		}
 		java.util.Date fechaUser2 = null;
 		try {
-			fechaUser2 = formatoDelTexto.parse("29/02/1964");
+			fechaUser2 = formatoDelTexto.parse("15/10/1988");
 		} catch (ParseException ex) {
 			ex.printStackTrace();
 		}
-		Integer user2 = BlaBlaCar.registrarUsuario("Barrendeitor", "1234", "Basurero", "basurero.top@gmail.com", "Pepe",
-				"Garcia", fechaUser2);
-		Integer car = BlaBlaCar.registrarCocheUsuario("9618BTR", "Dacia", 1990, 0, user2);
-		Integer idViaje = BlaBlaCar.registrarViaje(3, 125.0, car);
-		BlaBlaCar.registrarParadaOrigen(idViaje, "Murcia", "C/Mayorazgo", 25, 30001, fechaViaje);
+		Integer user2 = BlaBlaCar.registrarUsuario("SrcOche", "4321", "Enfermero", "sr56@gmail.com", "Jorge",
+				"Saura", fechaUser2);
+		Integer car = BlaBlaCar.registrarCocheUsuario("9338CCR", "Ford", 1999, 5, user2);
+		Integer idViaje = BlaBlaCar.registrarViaje(2, 250.0, car);
+		BlaBlaCar.registrarParadaOrigen(idViaje, "Murcia", "C/Mayorazgo", 25, 30005, fechaViaje);
 		BlaBlaCar.registrarParadaDestino(idViaje, "Manzanares", "C/Olimpia", 8, 13200, fechaViaje);
-		Integer reserva = BlaBlaCar.registrarReservaUsuario("Maleta grande", EstadoReserva.ACEPTADA, idViaje, user1);
+		Integer reserva = BlaBlaCar.registrarReservaUsuario("Llevo un perrito pequeño", EstadoReserva.ACEPTADA, idViaje, user1);
 		Integer valoracion = BlaBlaCar.registrarValoracion("El coche me sorprendio, buen viaje", 10, reserva, user1,
 				user2);
 

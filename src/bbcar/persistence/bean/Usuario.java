@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Entity
 public class Usuario implements Serializable{
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String usuario;
 	private String clave;

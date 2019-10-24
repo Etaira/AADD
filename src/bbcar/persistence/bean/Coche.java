@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Entity
 public class Coche implements Serializable {
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String matricula;
 	private String modelo;
