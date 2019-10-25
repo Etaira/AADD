@@ -60,10 +60,6 @@ public class BlaBlaCar {
 		try {
 			CocheDAO cocheDAO = DAOFactoria.getDAOFactoria(DAOFactoria.JPA).getCocheDAO();
 			Coche coche = cocheDAO.createCoche(matricula, modelo, anyo, confort, propietario);
-			UsuarioDAO usuarioDAO = DAOFactoria.getDAOFactoria(DAOFactoria.JPA).getUsuarioDAO();
-			Usuario user = usuarioDAO.findUsuarioByUsuario(propietario);
-			user.setCoche(coche);
-			usuarioDAO.update(user);
 			return coche.getId();
 		} catch (DAOException e) {
 			e.printStackTrace();

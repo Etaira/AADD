@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
-import bbcar.persistence.bean.Coche;
 import bbcar.persistence.bean.EntityManagerHelper;
 import bbcar.persistence.bean.Reserva;
 import bbcar.persistence.bean.Usuario;
@@ -46,10 +46,12 @@ public class JPAUsuarioDAO implements UsuarioDAO {
 		return user;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
-	public Collection findAll() throws DAOException {
-		// TODO Auto-generated method stub
-		return null;
+	public Collection<Usuario> findAll() throws DAOException {
+		EntityManager em = EntityManagerHelper.getEntityManager();
+		Query query = em.createQuery("SELECT * FROM usuario");
+		return (Collection<Usuario>) query.getResultList();
 	}
 
 	@Override

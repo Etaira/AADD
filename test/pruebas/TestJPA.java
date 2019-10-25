@@ -3,7 +3,6 @@ package pruebas;
 import static org.junit.jupiter.api.Assertions.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import javax.persistence.EntityManager;
 import org.junit.jupiter.api.Test;
@@ -20,7 +19,7 @@ import controlador.BlaBlaCar;
 public class TestJPA {
 
 	@Test
-	public void testRegistroUsuario() {
+	public void testRegistroUsuarioCoche() {
 		SimpleDateFormat formatoDelTexto = new SimpleDateFormat("dd/MM/yyyy");
 		java.util.Date fecha = null;
 		try {

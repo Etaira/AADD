@@ -2,7 +2,6 @@ package bbcar.persistence.dao;
 
 import javax.persistence.EntityManager;
 
-import bbcar.persistence.bean.Coche;
 import bbcar.persistence.bean.EntityManagerHelper;
 import bbcar.persistence.bean.Reserva;
 import bbcar.persistence.bean.Usuario;

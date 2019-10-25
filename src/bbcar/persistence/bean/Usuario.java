@@ -8,6 +8,8 @@ import javax.persistence.*;
 
 @Entity
 public class Usuario implements Serializable{
+
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
@@ -23,10 +25,8 @@ public class Usuario implements Serializable{
 	private Coche coche;
 	@OneToMany(cascade = { CascadeType.REMOVE }, mappedBy = "usuario")
 	private List<Reserva> reservas;
-	@JoinColumn(name = "valoraciones_recibidas")
 	@OneToMany(cascade = { CascadeType.REMOVE }, mappedBy = "usuarioReceptor")
 	private List<Valoracion> valoracionesRecibidas;
-	@JoinColumn(name = "valoraciones_emitidas")
 	@OneToMany(cascade = { CascadeType.REMOVE }, mappedBy = "usuarioEmisor")
 	private List<Valoracion> valoracionesEmitidas;
 

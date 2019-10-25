@@ -9,6 +9,8 @@ import javax.persistence.*;
 @NamedQuery(name="findViajeById",
 query="SELECT model from Viaje model where model.id = :id")
 public class Viaje implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;

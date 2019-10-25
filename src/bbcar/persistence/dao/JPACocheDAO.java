@@ -24,6 +24,7 @@ public class JPACocheDAO implements CocheDAO {
 		coche.setViajes(new ArrayList<Viaje>());
 		Usuario user = (Usuario) em.find(Usuario.class, propietario);
 		coche.setPropietario(user);
+		user.setCoche(coche);
 		em.persist(coche);
 		em.getTransaction().commit();
 		em.close();
@@ -32,7 +33,6 @@ public class JPACocheDAO implements CocheDAO {
 
 	@Override
 	public Coche findCocheByMatricula(String matricula) throws DAOException {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
